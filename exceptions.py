@@ -1,16 +1,25 @@
-class CrispyError(Exception):
-    pass
+from django.core.exceptions import SuspiciousOperation
 
 
-class FormHelpersException(CrispyError):
-    """
-    This is raised when building a form via helpers throws an error.
-    We want to catch form helper errors as soon as possible because
-    debugging templatetags is never fun.
-    """
+class DisallowedModelAdminLookup(SuspiciousOperation):
+    """Invalid filter was passed to admin view via URL querystring"""
 
     pass
 
 
-class DynamicError(CrispyError):
+class DisallowedModelAdminToField(SuspiciousOperation):
+    """Invalid to_field was passed to admin view via URL query string"""
+
+    pass
+
+
+class AlreadyRegistered(Exception):
+    """The model is already registered."""
+
+    pass
+
+
+class NotRegistered(Exception):
+    """The model is not registered."""
+
     pass
