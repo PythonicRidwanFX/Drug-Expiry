@@ -1,0 +1,69 @@
+{% extends 'partial/base.html' %}
+
+{% block title %}Manage Drug Prices{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Manage Drug Prices</h2>
+
+    <!-- Form to Add New Drug -->
+    <div class="mx-auto" style="width:60%; padding: center;">
+        <div class="row my-4">
+            <div class="col-md-12">
+                {% for message in messages %}
+                {% if message %}
+                <div class='alert alert-{{ message.tags }}'>
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div class="border bg-white p-3">
+                    <center><h4>Add New Drug Price</h4></center>
+                    <hr>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input class="btn btn-success btn-block" type="submit" value="Add Price">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table to Display and Edit Drug Prices -->
+    <div class="mx-auto" style="width:90%; padding-right: center;">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <table class="table bg-white">
+                    <thead class="bg-success">
+                        <tr class="text-white">
+                            <th scope="col">Drug Name</th>
+                            <th scope="col">Dosage</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prices in price_view %}
+                        <tr>
+                            <td>{{ prices.drug_name }}</td>
+                            <td>{{ prices.dosage }}</td>
+                            <td>#{{ prices.price }}</td>
+                            <td>
+                                <a class="btn btn-success btn-sm" href="{% url 'dashboard-update-drug' prices.id %}">Update</a>
+                                <a class="btn btn-danger btn-sm" href="{% url 'dashboard-delete-drug' prices.id %}">Delete</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4">No drugs available.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

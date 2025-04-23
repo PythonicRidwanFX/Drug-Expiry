@@ -1,0 +1,53 @@
+{% extends 'partial/base.html' %}
+{% block title %}Drug Page{% endblock %}
+
+
+{% block content %}
+{% include 'partial/topnav.html' %}
+ <!--Table-->
+ <div style="margin-left: 25px !important; width:95% !important">
+    <div class="row my-4">
+        <div class="col-md-12">
+            <table class="table bg-white">
+                <thead class="bg-success">
+                  <tr class="text-white">
+                    <th scope="col">Drug Name</th>
+                    {% comment %} <th scope="col">Dosage</th> {% endcomment %}
+                    <th scope="col">NAFDAC REG. N0</th>
+                    <th scope="col">BATCH N0</th>
+                    <th scope="col">Quantity in Stock</th>
+                    <th scope="col">MFG. DATE</th>
+                    <th scope="col">EXP. DATE</th>
+                    <th scope="col">Activity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in items %}
+                  <tr>
+                    <td>{{ item.drug_name }} ({{ item.dosage }})</td>
+                    {% comment %} <td>{{ item.dosage }}</td> {% endcomment %}
+                    <td>{{ item.nafdac_reg_n }}</td>
+                    <td>{{ item.batch_n }}</td>
+                    <td>{{ item.quantity_in_stock }}</td>
+                    <td>{{ item.mfg_date }}</td>
+                    <td>{{ item.exp_date }}</td>
+                    <td><span class="icon-container">
+                      <a class='btn btn-success btn-sm' href='{% url "dashboard-drug-update" item.id %}'>Edit</a>
+                      <a class='btn btn-danger btn-sm' href='{% url "dashboard-drug-delete" item.id %}'>Del</a>
+                    </span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+  
+</div>
+
+<a href="{% url 'print_drug_records' %}" class="btn btn-primary card-header offset-10 margin-right: 25px bg-success text-white" target="_blank">Print Drug Records</a>
+
+<!--End Table-->
+
+{% endblock %}

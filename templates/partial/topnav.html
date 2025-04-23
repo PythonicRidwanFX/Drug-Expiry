@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row mt-4">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-body">
+                  <marquee behavior="" direction="">
+                      <h3 class="my-2">Design and Implementation of Drug Inventory Management System with Expiry Alert feature.  Supervised by DR. BELLO H. K. </h3>
+                  </marquee>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+    <div class="row mt-4">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-header bg-success text-white">
+                  Statistics
+              </div>
+              <div>
+              <div class="card-body">
+                 <div class="row">
+                  <div class="col-md-3">
+                      <a class="text-decoration-none text-dark" href="{% url 'dashboard-staff' %}">
+                          <div class="card my-card shadow text-center p-3">
+                              <h4>Staff <i class="fas fa-users"></i></h4>
+                              <h3>{{ staff_count }}</h3>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="col-md-3">
+                    <a class="text-decoration-none text-dark" href="{% url 'dashboard-addstaff' %}">
+                      <div class="card my-card shadow text-center p-3">
+                          <h4> Add Staff <i class="fas fa-users"></i></h4>
+                          <h3>+</h3>
+                      </div>
+                  </a>
+                  </div>
+                  <div class="col-md-3">
+                      <a class="text-decoration-none text-dark" href="{% url 'dashboard-drug' %}">
+                          <div class="card my-card shadow text-center p-3">
+                              <h4>Drugs <i class="fa fa-capsules"></i></i></h4>
+                              <h3>{{ items_count }}</h3>
+                          </div>
+                      </a>
+                  </div>
+                  <div class="col-md-3">
+                    <a class="text-decoration-none text-dark" href="{% url 'dashboard-adddrug' %}">
+                      <div class="card my-card shadow text-center p-3">
+                          <h4>Add Drug <i class="fa fa-capsules"></i></i></h4>
+                          <h3>+</h3>
+                      </div>
+                  </a>
+                </div>
+                 
+                  
+
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+   <!--End Navbar-->

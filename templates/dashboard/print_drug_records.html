@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drug Records</title>
+    <style>
+        @media print {
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Drug Inventory Report</h1>
+    <table border="1">
+        <tr>
+            <th scope="col">NAFDAC REG. N0</th>
+            <th scope="col">BATCH N0</th>
+            <th scope="col">Quantity in Stock</th>
+            <th scope="col">MFG. DATE</th>
+            <th scope="col">EXP. DATE</th>
+        </tr>
+        {% for drug in drugs %}
+        <tr>
+            <td>{{ item.nafdac_reg_n }}</td>
+            <td>{{ item.batch_n }}</td>
+            <td>{{ item.quantity_in_stock }}</td>
+            <td>{{ item.mfg_date }}</td>
+            <td>{{ item.exp_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <button class="print-btn" onclick="window.print()">Print</button>
+</body>
+</html>

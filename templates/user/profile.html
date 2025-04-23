@@ -1,0 +1,57 @@
+{% extends 'partial/base.html' %}
+{% block title %}Login Page{% endblock %}    
+{% load crispy_forms_tags %}
+
+{% block content %}
+        <div class="container">
+            <div class="row my-4">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            Company Page
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <span class="h4">Company Information</span><a class="btn btn-success btn-sn float-right" href="{% url 'user-profile-update' %}">Edit</a>
+                                    <hr>
+                                    <div class="col-md-8">
+                                        <table class="table bg-white table-borderless">                                   
+                                            <tbody>
+                                              <tr>
+                                              <th scope="row">Name</th>
+                                                <td>{{ user.username }}</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">Email</th>
+                                                <td>{{ user.email }}</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">Phone</th>
+                                                <td>{{ user.profile.phone }}</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">Address</th>
+                                                <td> {{ user.profile.address }} </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                  {% if user.profile.image.url %}
+                                      <img class="img-thumbnail" src="{{ user.profile.image.url }}" alt="Profile Photo" style="width: 150px; height: 150px;">
+                                  {% else %}
+                                      <p>No profile photo uploaded yet.</p>
+                                  {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends 'partial/base.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+{% include 'partial/topnav.html' %}
+
+<ul>
+    <li><a href="{% url 'purchase_name' %}" class='text-decoration-none text-dark'>Purchase</a></li>
+    <li><a href="{% url 'price_record' %}" class='text-decoration-none text-dark'>Price of the Drug</a></li>
+</ul>
+
+{% endblock content %}
